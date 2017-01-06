@@ -71,7 +71,7 @@ env:
 script:
   - ccache -M 1GB; ccache -z
   - if [[ "${TRAVIS_OS_NAME}" = "linux" && "${TRAVIS_BRANCH}" != "coverity" ]]; then
-      PX4_DOCKER=1 make check_qgc_firmware;
+      ./Tools/docker_run.sh 'make qgc_firmware';
     elif [ "${TRAVIS_OS_NAME}" = "osx" ]; then
       make tests;
     fi
